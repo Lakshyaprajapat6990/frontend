@@ -1,7 +1,8 @@
 // Use environment variable for API URL
 // For Vercel deployment: Leave empty (will use relative path /api)
 // local development: http For://localhost:5000
-export const baseURL = process.env.REACT_APP_API_BASE_URL || '';
+// Remove trailing slash to avoid double slash in API calls
+export const baseURL = (process.env.REACT_APP_API_BASE_URL || '').replace(/\/$/, '');
 
 export const reviewsData = [
   {
