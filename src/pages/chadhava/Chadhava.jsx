@@ -65,11 +65,11 @@ export default function Chadhava({ user }) {
     getChadhava();
   }, [language]);
   const handeNavigate = (id, name) => {
-    const safeName =
-      typeof name === "string" && name.length > 0
-        ? name.split(" ").join("-")
-        : String(name ?? "");
-
+    if (!name || typeof name !== "string" || name.length === 0) {
+      console.error("Invalid name for navigation:", name);
+      return;
+    }
+    const safeName = name.split(" ").join("-");
     navigate(`/chadhava-details/${safeName}/${id}`);
   };
 
