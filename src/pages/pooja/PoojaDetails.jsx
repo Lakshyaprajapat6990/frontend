@@ -369,13 +369,12 @@ export default function PoojaDetails({ user }) {
                 {pricePackages.map((pkg) => {
                   const data = priceDetails[pkg.key];
                   if (!data || data.amaount == null) return null;
-                  const benefits = (
-                    language === "hi"
-                      ? data.descriptionHi || data.description
-                      : data.description
-                  )
-                    ?.split(". ")
-                    .filter(Boolean);
+                  const description = language === "hi"
+                    ? data.descriptionHi || data.description
+                    : data.description;
+                  const benefits = description && typeof description === "string"
+                    ? description.split(". ").filter(Boolean)
+                    : [];
                   return (
                     <Grid
                       item
