@@ -110,6 +110,10 @@ export default function Pooja() {
   }, []);
 
   const handeNavigate = (id, name) => {
+    if (!name || typeof name !== "string") {
+      console.error("Invalid name for navigation:", name);
+      return;
+    }
     let s = name.split(" ").join("-");
     navigate(`/pooja-details/${s}/${id}`);
   };

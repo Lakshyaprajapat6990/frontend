@@ -55,6 +55,10 @@ export default function Mandir({ user }) {
   const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900px
 
   const handleNavigate = (id, name) => {
+    if (!name || typeof name !== "string") {
+      console.error("Invalid name for navigation:", name);
+      return;
+    }
     let s = name.split(" ").join("-");
     navigate(`/temple-details/${s}/${id}`);
   };
